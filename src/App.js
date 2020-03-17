@@ -1,29 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super();
 
-    this.state = {
-      monsters: [
-        {
-          name: 'Frankenstein',
-          id: '0001'
-        },
-        {
-          name: 'Dracula',
-          id: '0002'
-        },
-        {
-          name: 'Zombie',
-          id: '0003'
-        }
-
-      ]
-    };
+    this.state = { monsters: [] };
   }
+
+  /*Life Cycle Method from class: fetches from the url, changes the response to json format, and set the array of users which was retrieved from the url to the monsters array in the this.state above */
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users').then(response => response.json()).then(users => this.setState({monsters: users}));
+  }
+
   render() {
     return (
       <div className="App">
