@@ -8,7 +8,10 @@ class App extends Component {
     super();
 
 
-    this.state = { monsters: [] };
+    this.state = {
+      monsters: [],
+      searchField: ''
+    };
   }
 
   /*Life Cycle Method from class: fetches from the url, changes the response to json format, and set the array of users which was retrieved from the url to the monsters array in the this.state above */
@@ -17,10 +20,17 @@ class App extends Component {
   }
 
   render() {
+    
+    const { monsters, searchField } = this.state;
+    const filteredMonsters = monsters.filter(monster =>
+      monster.name.toLowerCase().includes(searchField.toLowerCase())
+    );
+    // Tried to Add the Ability to Search Emails in the Search Field
+   // const filteredEmails = monsters.filter(monster => monster.email.toLowerCase().includes(searchField.toLowerCase()));
     return (
-
       <div className="App">
-        <CardList monsters={this.state.monsters} />
+        <input type='search' placeholder='Monster Search' onChange={e => this.setState({ searchField: e.target.value })} />
+        <CardList monsters={filteredMonsters}/>
       </div>
     );
   }
