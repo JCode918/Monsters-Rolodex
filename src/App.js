@@ -15,7 +15,7 @@ class App extends Component {
     };
 
     /*
-    *** This binding is no longer needed as I am using an arrow function below. Which automatically binds.
+    This binding is no longer needed as I am using an arrow function below. Which automatically binds.
     this.handleChange = this.handleChange.bind(this);
     */
   }
