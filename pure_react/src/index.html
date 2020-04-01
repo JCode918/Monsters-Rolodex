@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">React Not Rendered!</div>
+    <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+    <script>
+      const Person = props => {
+        return React.createElement("div", {}, [
+          React.createElement("h1", {}, props.name),
+          React.createElement("h3", {}, props.occupation),
+          React.createElement("p", {}, props.statement),
+        ]);
+      };
+
+      const arrPeople = [
+        {
+          name: "Jay",
+          occupation: "Software Engineer",
+          statement: "Grenadian Born Male, with an unrelenting drive and focus!",
+        },
+        {
+          name: "Manka",
+          occupation: "Orthopedic Doctor",
+          statement:
+            "Cameroonian Born Female, with a mind for Business and a Heart for Humanity!",
+        },
+      ];
+
+      const App = () => {
+        return React.createElement(
+          "div",
+          {},
+          React.createElement("h1", {}, [
+            React.createElement(Person, arrPeople[0]),
+            React.createElement(Person, arrPeople[1]),
+          ])
+        );
+      };
+
+      ReactDOM.render(React.createElement(App), document.getElementById("root"));
+    </script>
+  </body>
+</html>
